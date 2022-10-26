@@ -2,15 +2,49 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.img{
+  height: 150px;
+  width: 150px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar-style {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.bodystyle{
+  background-color: #DAF0EE;
+  font-weight: bold;
+  font-size: 50px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 500px;
+}
+
+.greeting{
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 20px;
+}
+
+.footerstyle{
+  background-color: #9db5b2;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.logoCart {
+  width: 50px;
+  height: 100px;
+  color: white;
+  margin: 0px;
 }
 
 .App-header {
