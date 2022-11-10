@@ -1,18 +1,27 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css';
 import AppBody from './components/AppBody';
+import Checkout from './components/Checkout';
+import Contacto from "./components/Contacto";
 import Footer from './components/Footer';
-import NavigationBar from './components/NavigationBar';
 import ItemListContainer from './components/ItemListContainer';
+import NavigationBar from './components/NavigationBar';
 
 function App() {
   return (
-   <div> 
-    <NavigationBar />
-    <ItemListContainer Greeting={"¡Hola! Tenemos lo mejor en celulares para ti. Disfruta recorriendo nuestro catálogo"}/>
-    <AppBody />
-    <Footer />
-    </div>
+    <BrowserRouter>
+      <NavigationBar/>
+      <Routes>
+        <Route path='/' element={<ItemListContainer />} />
+        <Route path='/checkout' element={<Checkout />} />
+        <Route path='/contacto' element={<Contacto />} />
+        <Route path='/category/:categoryId' element={<ItemListContainer />} />
+        {/* <Route path='/item/:itemId' element={<ItemDetailContainer />} /> */}
+      </Routes>
+      <AppBody/>
+      <Footer/>
+    </BrowserRouter>
+     
   )
 }
 
