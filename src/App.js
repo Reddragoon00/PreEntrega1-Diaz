@@ -6,6 +6,7 @@ import Contacto from "./components/Contacto";
 import Footer from './components/Footer';
 import ItemListContainer from './components/ItemListContainer';
 import NavigationBar from './components/NavigationBar';
+import ItemDetailContainer from "./components/ItemDetailContainer";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <Route path='/checkout' element={<Checkout />} />
         <Route path='/contacto' element={<Contacto />} />
         <Route path='/category/:categoryId' element={<ItemListContainer />} />
-        {/* <Route path='/item/:itemId' element={<ItemDetailContainer />} /> */}
+        { <Route path='/item/:itemId' element={<ItemDetailContainer />} /> }
       </Routes>
       <AppBody/>
       <Footer/>

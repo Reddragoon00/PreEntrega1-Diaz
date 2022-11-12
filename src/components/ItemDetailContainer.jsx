@@ -2,14 +2,14 @@ import React from 'react'
 import {
   useState
 } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
 export default function ItemListContainer({}) {
 
-  const {categoryId} = useParams();
+  const {itemID} = useParams();
 
-  const [productos, setProductos] = useState([]);
+  const [producto, setProducto] = useState({});
   let productosHC = [{
       id: 100,
       name: "Iphone X",
@@ -44,33 +44,29 @@ export default function ItemListContainer({}) {
 
   
   useEffect(() => {
-    const productosPromise = new Promise((res, rej) => {
+    const productoPromise = new Promise((res, rej) => {
       setTimeout(() => {
-        res(productosHC)
+        res(productosHC.find((item) => producto.id == itemID));
       }, 2000)
     });
       
-    productosPromise.then((res) => {
-      if(categoryId){
-        setProductos(res.filter(item=> item.category == categoryId))
-      }else{
-        setProductos(res);
-      }
-    })
-  }, [categoryId]);  
+    productoPromise.then((res) => {
+     setProducto(res);
+      });
+    }, [itemID]);  
   
   return (
     <div>
-      {!productos.length && "Loading.."}
-      {productos.map((item) => (
-        <div key={item.id}>
-        <>{JSON.stringify(item)}</>
-        <br/>
-        <Link to ={'/item/' + item.id}>Ir al Item</Link>
-        <br/>
-        <br/>
-        </div>
-      ))}
+        {
+         producto.id ? (
+                <>
+                {producto.id + " "
+                + " " + producto.name
+                + " " + producto.category
+                + " " + producto.precio}
+                </>
+            ): <>Loading...</>
+        }
     </div>
   );
   }
