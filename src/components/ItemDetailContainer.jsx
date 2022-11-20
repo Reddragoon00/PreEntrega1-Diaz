@@ -4,49 +4,19 @@ import {
 } from 'react'
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import {data} from './data';
+import ItemDetail from './ItemDetail';
 
-export default function ItemListContainer({}) {
+export default function ItemDeatailContainer({}) {
 
   const {itemID} = useParams();
 
   const [producto, setProducto] = useState({});
-  let productosHC = [{
-      id: 100,
-      name: "Iphone X",
-      category: "celulares",
-      precio: 100
-    },
-    {
-      id: 101,
-      name: "Iphone 11",
-      category: "celulares",
-      precio: 120
-    },
-    {
-      id: 102,
-      name: "Iphone 12",
-      category: "celulares",
-      precio: 113
-    },
-    {
-      id: 103,
-      name: "Iphone 13",
-      category: "celulares",
-      precio: 200
-    },
-    {
-      id: 104,
-      name: "Funda Iphone X",
-      category: "accesorios",
-      precio: 200
-    },
-  ]
-
   
   useEffect(() => {
     const productoPromise = new Promise((res, rej) => {
       setTimeout(() => {
-        res(productosHC.find((item) => producto.id == itemID));
+        res(data.find((item) => producto.id == itemID));
       }, 2000)
     });
       
@@ -57,16 +27,7 @@ export default function ItemListContainer({}) {
   
   return (
     <div>
-        {
-         producto.id ? (
-                <>
-                {producto.id + " "
-                + " " + producto.name
-                + " " + producto.category
-                + " " + producto.precio}
-                </>
-            ): <>Loading...</>
-        }
+        <ItemDetail producto={producto}/>
     </div>
   );
   }
